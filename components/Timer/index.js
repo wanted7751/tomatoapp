@@ -1,23 +1,21 @@
 import React,{Component} from "react";
 import {View, Text,StyleSheet, StatusBar} from 'react-native';
+import Button from "../../Button";
 
 
 
 class Timer extends Component{
     render(){
-        return(
-
-            <View style={styles.container}>
-                <StatusBar barStyle="light-content" />
-                <View style={styles.upper}>
-                    <Text style={styles.timer}>25:00</Text>
-                </View>
-                <View style={styles.lower}>
-                    <Text>BUTTONS HERE</Text>
-                </View>
+        return <View style={styles.container}>
+            <StatusBar barStyle="light-content" />
+            <View style={styles.upper}>
+              <Text style={styles.timer}>25:00</Text>
             </View>
-            
-        ) 
+            <View style={styles.lower}>
+                <Button iconName={"play-circle"} onPress={() => alert("it Works!")} />
+                <Button iconName={"stop-circle"} onPress={() => alert("it Works!")} />
+            </View>
+          </View>; 
     }
 }
 
