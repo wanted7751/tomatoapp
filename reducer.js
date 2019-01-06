@@ -82,7 +82,8 @@ function applyAddSecond(state) {
   }else{
       return{
           ...state,
-          isPlaying: false
+          isPlaying: false,
+          elapsedTime:0
       }
   }
 }

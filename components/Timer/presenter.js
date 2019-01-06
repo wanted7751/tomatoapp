@@ -2,7 +2,18 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, StatusBar } from 'react-native';
 import Button from "../../Button";
 
+function formatTime(time) {
+    var minutes = Math.floor(time / 60);
+    time -= minutes * 60;
 
+    var seconds = parseInt(time % 60, 10);
+
+    return `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10
+        ? `0${seconds}`
+        : seconds}`;
+
+        
+}
 
 class Timer extends Component {
 
@@ -33,10 +44,11 @@ class Timer extends Component {
             restartTimer,
             addSecond
          } = this.props
+         
         return <View style={styles.container}>
             <StatusBar barStyle="light-content" />
             <View style={styles.upper}>
-                <Text style={styles.timer}>{this.props.elapsedTime}</Text>
+                <Text style={styles.timer}>{formatTime( timerDuration - elapsedTime )}</Text>
             </View>
             <View style={styles.lower}>
                 {!isPlaying ? (
