@@ -1,44 +1,23 @@
-import React,{Component} from "react";
-import {View, Text,StyleSheet, StatusBar} from 'react-native';
-import Button from "../../Button";
+import {connect} from "react-redux";
+import Timer from './presenter';
 
-
-
-class Timer extends Component{
-    render(){
-        return <View style={styles.container}>
-            <StatusBar barStyle="light-content" />
-            <View style={styles.upper}>
-              <Text style={styles.timer}>25:00</Text>
-            </View>
-            <View style={styles.lower}>
-                <Button iconName={"play-circle"} onPress={() => alert("it Works!")} />
-                <Button iconName={"stop-circle"} onPress={() => alert("it Works!")} />
-            </View>
-          </View>; 
+function mapStateToProps(state){
+    //이 객체는 스토어에서 state를 복사해서 container props 에 붙여넣는 역할
+    const {isPlaying, elapsedTime, timerDuration} = state
+    // 이는 비구조할당에 대해서 익히기 js문법
+    // 
+    console.log(state)
+    return {
+        isPlaying, 
+        //isPlaying: isPlaying,
+        elapsedTime, 
+        //elapsedTime: elapsedTime,
+        timerDuration 
+        //timerDuration: timerDuration
+        // 여기선 각 state를 열고 각 prop들을  리턴하는것이지. 
+        // 이 prop 들은 Timer에 presenter.js에서 활용이된다. 
     }
+
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#CE0B24"
-  },
-  upper: {
-    flex: 2,
-    justifyContent:"center",
-    alignItems: 'center',
-  },
-  lower: {
-    flex: 2,
-    justifyContent: "center",
-    alignItems: 'center',
-  },
-  timer: {
-      color:"white",
-      fontSize: 120,
-      fontWeight: '300',
-  }
-});
-
-export default Timer;
+export default connect(mapStateToProps)(Timer);

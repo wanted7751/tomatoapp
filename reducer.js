@@ -1,13 +1,13 @@
 // import 필요한 것을 불러온다. 
 
-// Actions 액션을 정의
+// Actions 액션을 정의 1
 
 const START_TIMER = "START_TIMER";
 const RESTART_TIMER = "RESTART_TIMER";
 const ADD_SECOND = "ADD_SECOND";
 
 
-// Action Creators 액션 크리에이터 정의
+// Action Creators 액션 크리에이터 정의 2
 
 function startTimer(){
     return {
@@ -30,7 +30,7 @@ function addSecond(){
     }
 }
 
-// Reducer 리듀서 정의
+// Reducer 리듀서 정의 3
 
 const TIMER_DURATION = 1500;
 
@@ -50,11 +50,13 @@ function reducer(state = initialState, action){
             return applyRestartTimer(state); 
         case ADD_SECOND:
             return applyAddSecond(state);
+        default: 
+            return state;
 
             
     }
 }
-// Reducer Functions
+// Reducer Functions 4
 
 function applyStartTimer(state){
     return {
@@ -85,7 +87,7 @@ function applyAddSecond(state) {
   }
 }
 
-// Export Action Creators
+// Export Action Creators 5
 
 const actionCreator={
     startTimer,
@@ -93,6 +95,8 @@ const actionCreator={
     addSecond
 }
 
-// Export Reducer
+// Export Reducer 6
 
 export default reducer;
+
+// start 버튼을 누르면 5 -> 2 -> 3 -> 4 ->
