@@ -27,7 +27,8 @@ function mapDispatchToProps(dispatch){
         startTimer: bindActionCreators(tomatoActions.startTimer, dispatch),
         // 이건 이름을 바꿔도 된다. 
         // 단지 오른쪽에 reducer의 startTimer를 갖고와서 이름을 제정의한것일뿐이다.
-        restartTimer: bindActionCreators(tomatoActions.restartTimer, dispatch)
+        restartTimer: bindActionCreators(tomatoActions.restartTimer, dispatch),
+        addSecond: bindActionCreators(tomatoActions.addSecond, dispatch),
 
     }
 }
