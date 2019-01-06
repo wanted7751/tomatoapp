@@ -5,6 +5,24 @@ import Button from "../../Button";
 
 
 class Timer extends Component {
+
+    componentWillReceiveProps(nextProps){
+        const currentProps = this.props;
+        if(!currentProps.isPlaying && nextProps.isPlaying){
+            //console.log(`current is ${currentProps}, netxt is ${nextProps}`);
+            // start the interval
+            const timerInterval = setInterval(()=>{
+                currentProps.addSecond()
+            },1000)
+            this.setState({
+                timerInterval
+            })
+        } else if (currentProps.isPlaying && !nextProps.isPlaying){
+            // stop the interval
+            clearInterval(this.state.timerInterval) 
+        }
+    }
+
     render() {
         console.log(this.props);
         const { 
@@ -18,7 +36,7 @@ class Timer extends Component {
         return <View style={styles.container}>
             <StatusBar barStyle="light-content" />
             <View style={styles.upper}>
-                <Text style={styles.timer}>25:00</Text>
+                <Text style={styles.timer}>{this.props.elapsedTime}</Text>
             </View>
             <View style={styles.lower}>
                 {!isPlaying ? (
