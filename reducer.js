@@ -89,11 +89,13 @@ function applyAddSecond(state) {
 
 // Export Action Creators 5
 
-const actionCreator={
+const actionCreators={
     startTimer,
     restartTimer,
     addSecond
 }
+
+export {actionCreators};
 
 // Export Reducer 6
 
